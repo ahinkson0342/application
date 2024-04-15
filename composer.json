@@ -1,0 +1,14 @@
+{
+  "name": "328/application",
+  "authors":
+  [
+    {
+      "name": "Andrew Hinkson",
+      "email": "hinkson.andrew@student.greenriver.edu"
+    }
+  ],
+  "require":
+  {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
