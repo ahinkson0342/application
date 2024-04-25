@@ -1,24 +1,27 @@
 <?php
 
-//turning on error reporting
+// 328/diner/index.php
+// This is my CONTROLLER!
+
+// Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Require autoload file
-require_once('vendor/autoload.php');
+// Require the autoload file
+require_once ('vendor/autoload.php');
 
-//Create instance of base class
+// Instantiate the F3 Base class
 $f3 = Base::instance();
 
-//Define a default route
-$f3->route('GET /',function()
-{
-//    echo '<h1>Hello World!</h1>';
+// Define a default route
+// https://tostrander.greenriverdev.com/328/hello-fat-free/
+$f3->route('GET /', function() {
+    //echo '<h1>Hello from My Diner App!</h1>';
 
-//    Render a view page
+    // Render a view page
     $view = new Template();
     echo $view->render('views/home.html');
 });
 
-//Run fat-free
-$f3->Run();
+// Run Fat-Free
+$f3->run();
