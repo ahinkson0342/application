@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="bg-secondary" lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Application</title>
+
+        <!--***************************************** BOOTSTRAP CDNS ****************************************************-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+              integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+                crossorigin="anonymous"></script>
+        <!--*************************************** END BOOTSTRAP CDNS **************************************************-->
+
+        <link rel="stylesheet" href="styles/styles.css">
+
+    </head>
+
+    <body class="bg-secondary">
+    <div class="mx-auto bg-light col-11 px-3 pb-3">
+        <h4>Software Development Internship</h4>
+        <p>Seattle, WA - Paid, 16 weeks</p>
+            <h2 class="text-center">Experience</h2>
+            <hr>
+            <form action="#" class="form-group ms-4 pb-3" method="POST">
+                <div class="row text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                        <label for="userBio" class="form-control-label fw-bold">Biography</label>
+                        <textarea id="userBio" name="userBio" rows="8" cols="50"></textarea>
+                    </div>
+                    <div class="form-group col-sm-4 flex-column d-flex">
+                        <label for="userGithub" class="form-control-label fw-bold">Github Link</label>
+                        <input type="text" class="form-control" id="userGithub" name="userGithub" placeholder="github.com/my_github">
+                        <label class="form-control-label fw-bold">Years Experience</label>
+                        <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="zeroTwo" id="zeroTwo" value="0-2">
+                            <label class="form-check-label" for="zeroTwo">0-2</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="twoFour" id="twoFour" value="2-4">
+                            <label class="form-check-label" for="twoFour">2-4</label>
+                        </div>
+                        <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="fourPlus" id="fourPlus" value="4+">
+                            <label class="form-check-label" for="fourPlus">4+</label>
+                        </div>
+                        <label class="form-control-label fw-bold">Willing to Relocate</label>
+                        <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="yRelocate" id="yRelocate" value="0-2">
+                            <label class="form-check-label" for="yRelocate">Yes</label>
+                        </div>
+                       <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="nRelocate" id="nRelocate" value="2-4">
+                            <label class="form-check-label" for="nRelocate">No</label>
+                       </div>
+                        <div class="form-check form-check-inline col-sm-2">
+                            <input class="form-check-input" type="radio" name="mRelocate" id="mRelocate" value="4+">
+                            <label class="form-check-label" for="mRelocate">Maybe</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end me-5">
+                    <button class="btn btn-primary col-4" type="submit">Next</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
