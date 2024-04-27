@@ -19,7 +19,13 @@
 </head>
 
 <body class="bg-secondary">
-    <div class="mx-auto bg-light col-11 px-3 pb-3">
+    <!--  start navbar   -->
+    <nav class="navbar navbar-light bg-light px-3">
+        <a class="navbar-brand" href="home">Microsoft</a>
+        <a class="navbar-brand btn btn-primary text-white" href="#">Apply Now!</a>
+    </nav>
+    <!--   end navbar   -->
+    <div class="mx-auto bg-light col-11 px-3 pb-3 mt-3">
         <h4>Software Development Internship</h4>
         <p>Seattle, WA - Paid, 16 weeks</p>
         <h2 class="text-center">Personal Information</h2>
@@ -48,7 +54,7 @@
             <div class="row justify-content-start text-left mb-4">
                 <div class="form-group col-sm-4 flex-column d-flex">
                     <label for="state" class="form-control-label fw-bold">State</label>
-                    <select id="state" class="form-control">
+                    <select id="state" name="state" class="form-select">
                         <option value="WA">Washington</option>
                         <option value="AK">Alaska</option>
                         <option value="AL">Alabama</option>

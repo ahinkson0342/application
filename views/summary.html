@@ -18,13 +18,56 @@
 
     </head>
     <body class="bg-secondary">
-    <div class="mx-auto bg-light col-11 px-3 pb-3">
-        <h4>Software Development Internship</h4>
-        <p>Seattle, WA - Paid, 16 weeks</p>
-        <h2 class="text-center">Summary</h2>
-        <hr>
-
-
-    </div>
+    <!--  start navbar   -->
+    <nav class="navbar navbar-light bg-light px-3">
+        <a class="navbar-brand" href="home">Microsoft</a>
+        <a class="navbar-brand btn btn-primary text-white" href="#">Apply Now!</a>
+    </nav>
+    <!--   end navbar   -->
+        <div class="mx-auto bg-light col-11 px-3 pb-3 mt-3 row">
+            <h4>Software Development Internship</h4>
+            <p>Seattle, WA - Paid, 16 weeks</p>
+            <h2 class="text-center">Summary</h2>
+            <hr>
+            <div class="col-6">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Name: {{ @SESSION.fName }} {{ @SESSION.lName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: {{ @SESSION.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>State: {{ @SESSION.state }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone: {{ @SESSION.pNumber }}</td>
+                    </tr>
+                    <tr>
+                        <td>Github Link: {{ @SESSION.userGithub }}</td>
+                    </tr>
+                    <tr>
+                        <td>Experience: {{ @SESSION.exp }} years</td>
+                    </tr>
+                    <tr>
+                        <td>Willing to Relocate: {{ @SESSION.relocate }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mailing Lists: Software Skills: {{ implode(', ', @SESSION.SDEVSkills) }}
+                            Industry Verticals:{{ implode(', ', @SESSION.SDEVSkills) }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>Summary:</h2>
+                <p>Biography: {{ @SESSION.userBio }}</p>
+            </div>
+            <div class="col-6">
+                <img class="img-fluid" src="images/pfp.jpg" alt="blank user image">
+            </div>
+            <div class="d-flex justify-content-center my-5">
+                <button class="btn btn-primary col-4" type="submit">Submit Application!</button>
+            </div>
+        </div>
     </body>
 </html>
