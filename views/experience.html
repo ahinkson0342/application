@@ -38,20 +38,17 @@
                     </div>
                     <div class="form-group col-sm-4 flex-column d-flex">
                         <label for="userGithub" class="form-control-label fw-bold">Github Link</label>
-                        <input type="text" class="form-control" id="userGithub" name="userGithub" placeholder="github.com/my_github">
+                        <input type="text" class="form-control" id="userGithub" name="userGithub" placeholder="https://www.github.com/my_github">
+                        <check if="{{isset(@errors['userGithub'])}}">
+                            <span class="text-danger">{{@errors['userGithub']}}</span>
+                        </check>
                         <label class="form-control-label fw-bold">Years Experience</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="yearsExperience" id="0" value="0-2">
-                            <label class="form-check-label" for="0">0-2</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="yearsExperience" id="2" value="2-4">
-                            <label class="form-check-label" for="2">2-4</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="yearsExperience" id="4" value="4+">
-                            <label class="form-check-label" for="4">4+</label>
-                        </div>
+                        <repeat group="{{@exp}}" value="{{@exp}}">
+                            <label><input type="radio" name="experience[]" value="{{ @exp }}"> {{ ucfirst(@exp) }}</label><br>
+                        </repeat>
+                        <check if="{{isset(@errors['yearsExperience'])}}">
+                            <span class="text-danger">{{@errors['yearsExperience']}}</span>
+                        </check>
                         <label class="form-control-label fw-bold">Willing to Relocate</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="willingRelocate" id="yes" value="Yes">
