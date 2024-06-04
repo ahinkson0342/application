@@ -1,15 +1,12 @@
 <?php
 
-use classes\Applicant;
-use classes\Applicant_SubscribedToLists;
-
-require_once ('vendor/autoload.php');
-require_once ('model/validate.php');
-require_once ('model/data-layer.php');
-
 /** My Controller class for the application project
  *  328/diner/controllers/controller.php
  */
+
+require_once('model/validate.php');
+require_once('model/data-layer.php');
+
 class Controller
 {
     private $_f3;
@@ -28,8 +25,7 @@ class Controller
     function personalInfo()
     {
         // If the form has been posted
-        if ($_SERVER['REQUEST_METHOD'] == "POST")
-        {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             //echo "<p>You got here using the POST method</p>";
             //var_dump ($_POST);
@@ -41,63 +37,45 @@ class Controller
             $email = $_POST['email'];
             $state = $_POST['state'];
             $pNumber = $_POST['pNumber'];
-            $mList = $_POST['jobOpeningsML'];
 
 
             // check if data has been entered
-            if (isset($fName) && isset($lName) && isset($email) && isset($pNumber))
-            {
-
+            if (isset($fName) && isset($lName) && isset($email) && isset($pNumber)) {
 
                 //validation
-                if (validName($fName))
-                {
+                if (validName($fName)) {
                     $this->_f3->set('SESSION.fName', $fName);
-                }
-                else
-                {
+                } else {
                     $this->_f3->set('errors["fName"]', "Please do not enter any numbers within the first name field");
                 }
 
-                if (validName($_POST['lName']))
-                {
+                if (validName($lName)) {
                     $this->_f3->set('SESSION.lName', $lName);
-                }
-                else
-                {
+                } else {
                     $this->_f3->set('errors["lName"]', "Please do not enter any numbers within the last name field");
                 }
 
-                if (validEmail($_POST['email']))
-                {
+                if (validEmail($email)) {
                     $this->_f3->set('SESSION.email', $email);
-                }
-                else
-                {
+                } else {
                     $this->_f3->set('errors["email"]', "Please enter a valid email");
                 }
 
-                if (validPhone($_POST['pNumber']))
-                {
+                if (validPhone($pNumber)) {
                     $this->_f3->set('SESSION.pNumber', $pNumber);
-                }
-                else
-                {
+                } else {
                     $this->_f3->set('errors["pNumber"]', "Please enter a valid phone number - format (XXX) XXX-XXXX");
                 }
 
-                $this->_f3->set('SESSION.mList', $mList);
 
+                // No validation for state
                 $this->_f3->set('SESSION.state', $state);
 
                 // Send the user to the next form as long as no errors were found
-                if (empty($this->_f3->get('errors')))
-                {
+                if (empty($this->_f3->get('errors'))) {
                     $this->_f3->reroute('experience');
                 }
-            }
-            else
-            {
+            } else {
                 // Temporary
                 echo "<p class='text-center text-danger'>Please ensure you filled out all fields!</p>";
             }
@@ -155,48 +133,10 @@ class Controller
                 $this->_f3->set('SESSION.userBio', $userBio);
                 $this->_f3->set('SESSION.relocate', $relocate);
 
-                $mList = $_SESSION['mList'];
-
-                if($mList)
-                {
-                    $applicant = new Applicant_SubscribedToLists(
-                        $this->_f3->get('SESSION.fName'),
-                        $this->_f3->get('SESSION.lName'),
-                        $this->_f3->get('SESSION.email'),
-                        $this->_f3->get('SESSION.pNumber'),
-                        $this->_f3->get('SESSION.state')
-                    );
-                }
-                else
-                {
-                    $applicant = new Applicant(
-                        $this->_f3->get('SESSION.fName'),
-                        $this->_f3->get('SESSION.lName'),
-                        $this->_f3->get('SESSION.email'),
-                        $this->_f3->get('SESSION.pNumber'),
-                        $this->_f3->get('SESSION.state')
-                    );
-                }
-
-                $applicant->setGithub($userGithub);
-                $applicant->setExperience($yrsExp);
-                $applicant->setBio($userBio);
-                $applicant->setRelocate($relocate);
-
-                $this->_f3->set('SESSION.applicant', $applicant);
-
                 // Send the user to the next form as long as no errors were found
-                if (empty($this->_f3->get('errors')) && !$mList)
-                {
-                    $this->_f3->reroute('summary');
-                }
-                else if(empty($this->_f3->get('errors')))
+                if (empty($this->_f3->get('errors')))
                 {
                     $this->_f3->reroute('mailingLists');
-                }
-                else
-                {
-                    echo "<p class='text-center text-danger'>Please ensure you filled out all fields!</p>";
                 }
             }
             else
@@ -215,7 +155,6 @@ class Controller
     function mailingLists()
     {
         // If the form has been posted
-        global $f3;
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
 
@@ -231,11 +170,11 @@ class Controller
             {
 
                 // Add the data to the session array
-                $f3->set('SESSION.SDEVSkills', $SDEVSkills);
-                $f3->set('SESSION.verticals', $verticals);
+                $this->_f3->set('SESSION.SDEVSkills', $SDEVSkills);
+                $this->_f3->set('SESSION.verticals', $verticals);
 
                 // Send the user to the next form
-                $f3->reroute('summary');
+                $this->_f3->reroute('summary');
             }
             else
             {
